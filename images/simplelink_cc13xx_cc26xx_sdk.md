@@ -1,3 +1,10 @@
-### simplelink_cc13xx_cc26xx_sdk  Based ti_sidewalk Boards
+### simplelink_cc13xx_cc26xx_sdk  Based ti_wisunfan Boards
+* CC1312R1_LAUNCHXL
+* CC1352P1_LAUNCHXL
+* CC1352R1_LAUNCHXL
+* LP_CC1312R7
 * LP_CC1352P7_1
-* LP_CC2652R7
+* LP_EM_CC1312PSIP
+* LP_EM_CC1314R10
+* LP_EM_CC1354P10_1
+* LP_EM_CC1354P10_6
