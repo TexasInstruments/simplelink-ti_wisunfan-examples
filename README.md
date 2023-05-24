@@ -1,12 +1,12 @@
-# SimpleLink ti_sidewalk Examples
+# SimpleLink ti_wisunfan Examples
 
-This repository contains the ti_sidewalk examples for TI devices supported by the
+This repository contains the ti_wisunfan examples for TI devices supported by the
 SimpleLink Low Power F2 SDK.  To learn which devices are supported by
 the SDK, refer to the [SDK Device Association section](#sdk-association).
 
 ## Repository Layout
 
-The **examples/** directory contains the same ti_sidewalk examples provided in the
+The **examples/** directory contains the same ti_wisunfan examples provided in the
 SDK, in the same directory structure.
 
 The SimpleLink Low Power F2 SDK is provided as [Git
@@ -18,7 +18,7 @@ one step like this:
 
 ```bash
 # To initialize and update the F2 SDK
-.../simplelink-ti_sidewalk-examples$ git submodule update --init cc13xx_cc26xx_sdk
+.../simplelink-ti_wisunfan-examples$ git submodule update --init cc13xx_cc26xx_sdk
 ```
 
 Alternatively you can clone and initialize/update _all_ submodules when cloning a repo
@@ -58,27 +58,12 @@ versions for each SDK if needed.
 
 ## Build Examples
 
-After building the SDK libraries, you can build the ti_sidewalk examples.  The
+After building the SDK libraries, you can build the ti_wisunfan examples.  The
 examples support two ways to build:
 
-* [Command line makefile](#build-examples-from-command-line)
 * [CCS IDE](#build-examples-from-ccs)
+* [IAR IDE](#build-examples-from-iar)
 
-### Build Examples From Command Line
-
-Remember, before building the examples, you must build the SDK libraries!
-
-To build a ti_sidewalk example from the command line using [GNU
-make](https://www.gnu.org/software/make/manual/make.html), change into the
-appropriate example's directory (e.g.
-**{rtos}/{board}/ti_sidewalk/{example}/{rtos}/{toolchain}**), then run `make`.
-
-```bash
-.../simplelink-ti_sidewalk-examples$ cd examples/rtos/LP_CC1352P7_1/ti_sidewalk/sid_demo/freertos/gcc/
-.../gcc$ make
-```
-
-Note, you can also clean the example with `make clean`.
 
 ### Build Examples From CCS
 
@@ -118,6 +103,15 @@ Now you can import an example!
 4. Select the example(s) you wish to import and press Finish
 
 ![Import CCS Projects Dialog](images/select_ccsproject.png)
+
+### Build Examples from IAR
+
+Remember, before building the examples, you must build the SDK libraries!
+
+Follow the instructions in your respective SDK's Quick Start Guide:
+
+* [SimpleLink Low Power F2 SDK Quick Start Guide](https://dev.ti.com/tirex/explore/node?node=A__AC7UNBWx3i6iMAUzzhqKwA__com.ti.SIMPLELINK_CC13XX_CC26XX_SDK__BSEc4rl__LATEST)
+
 
 ## Troubleshooting
 
