@@ -104,6 +104,17 @@ Now you can import an example!
 
 ![Import CCS Projects Dialog](images/select_ccsproject.png)
 
+If building with F2 SDK 7.10.01.24 you will need to install SysConfig to 1.16.2 and update the project.   
+
+1. Install SysConfig 1.16.2 (see [cc13xx_cc26xx_sdk](https://github.com/TexasInstruments/cc13xx_cc26xx_sdk 'SDK Link') instructions)
+2. Select the project to build
+3. Right-click and select "Properties."
+4. Under General, select Products, then SysConfig
+   ![Select Product Dialog](images/General-Products.png)
+5. Click on Edit and select 1.16.2
+    ![Edit SysConfig](images/SysCOnfigVersion.png)
+   
+
 ### Build Examples from IAR
 
 Remember, before building the examples, you must build the SDK libraries!
