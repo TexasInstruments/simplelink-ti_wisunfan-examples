@@ -104,6 +104,7 @@ Now you can import an example!
 
 ![Import CCS Projects Dialog](images/select_ccsproject.png)
 
+=======
 If building with F2 SDK 7.10.01.24 you will need to install SysConfig to 1.16.2 and update the project.   
 
 1. Install SysConfig 1.16.2 (see [cc13xx_cc26xx_sdk](https://github.com/TexasInstruments/cc13xx_cc26xx_sdk 'SDK Link') instructions)
