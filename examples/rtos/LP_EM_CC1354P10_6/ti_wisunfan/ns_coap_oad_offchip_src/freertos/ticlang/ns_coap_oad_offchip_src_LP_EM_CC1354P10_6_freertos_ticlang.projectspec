@@ -186,7 +186,6 @@
             ${CG_TOOL_ROOT}/bin/tiarmobjcopy ${BuildArtifactFileBaseName}.out --output-target binary ${BuildArtifactFileBaseName}-noheader.bin;
             ${COM_TI_SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR}/tools/common/mcuboot/imgtool sign --header-size 0x80 --align 4 --slot-size 0x56000 --pad --version 1.0.0 --pad-header --key ${COM_TI_SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR}/source/third_party/mcuboot/root-ec-p256.pem ${BuildArtifactFileBaseName}-noheader.bin ${BuildArtifactFileBaseName}.bin;
         "
-        enableSysConfigTool="true"
         sysConfigBuildOptions="
             --product ${COM_TI_SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR}/.metadata/product.json
             --compiler ticlang
