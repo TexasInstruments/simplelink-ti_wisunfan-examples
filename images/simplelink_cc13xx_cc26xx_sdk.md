@@ -1,4 +1,4 @@
-### simplelink_cc13xx_cc26xx_sdk  Based ti_wisunfan Boards
+### Supported boards for ti_wisunfan examples in simplelink_cc13xx_cc26xx_sdk
 * CC1312R1_LAUNCHXL
 * CC1352P1_LAUNCHXL
 * CC1352R1_LAUNCHXL

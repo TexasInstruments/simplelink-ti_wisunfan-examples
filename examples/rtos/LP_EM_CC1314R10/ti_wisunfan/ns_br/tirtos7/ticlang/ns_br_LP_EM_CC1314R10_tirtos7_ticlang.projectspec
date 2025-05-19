@@ -14,6 +14,7 @@
         name="ns_br_LP_EM_CC1314R10_tirtos7_ticlang"
         configurations="Release, SecureBoot"
         toolChain="TICLANG"
+        cgtVersion="3.2.2"
         connection="TIXDS110_Connection.xml"
         device="Cortex M.CC1314R10"
         ignoreDefaultDeviceSettings="true"

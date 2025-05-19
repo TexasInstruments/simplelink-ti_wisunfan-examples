@@ -80,31 +80,26 @@ Security - Enabled (we dont support disabling security for debug purposes at thi
 
 <p>All non-OAD projects can be configured to be built as a secure boot project. This will configure the project to be built into a <code>&lt;project_name&gt;.bin</code> file, meant to be securely booted into via MCUBoot. To configure a project to be build in this mode, change the project build configuration of the imported project to the SecureBoot configurationbefore building the project. This can be done in both CCS and IAR IDEs. A sysconfig option for secure boot configuration is present in current projects, but is only used to inform users to change the project build configuration.</p>
 
-<p>Similar to OAD projects, the secure boot project must be booted into with the MCUBoot bootloader already flashed onto the device.  MCUBoot can be built from the following project: <code>&lt;SDK_INSTALL_DIR&gt;/examples/nortos/&lt;board_type&gt;/mcuboot_app/mcuboot</code>. Configure MCUBoot as follows:</p>
+<p>Similar to OAD projects, the secure boot project must be booted into with the MCUBoot bootloader already flashed onto the device. MCUBoot can be built from the following project: <code>&lt;SDK_INSTALL_DIR&gt;/examples/nortos/&lt;board_type&gt;/mcuboot_app/mcuboot</code>. Configure MCUboot using the MCUBoot project sysconfig file as follows:</p>
 
 <ul>
-<li>In the <code>&lt;mcuboot_example_root&gt;/mcuboot_config/mcuboot_config.h</code> file:
+<li>For the <code>Upgrade Mode</code> configurable, choose <code>Overwrite</code></li>
+<li>For the <code>Enable External Flash</code> configurable, choose false (unchecked)</li>
+<li>In the <code>Image 1</code> module:
 <ul>
-<li>Comment out <code>#define MCUBOOT_DIRECT_XIP</code> to undefine it</li>
-<li>Uncomment <code>#define MCUBOOT_OVERWRITE_ONLY</code> so it is defined</li>
-<li>Make sure <code>#define TI_BOOT_USE_EXTERNAL_FLASH</code> is commented out and not defined</li>
+<li>If using a CC13X2X7 platform, modify the following configurables:
+<ul>
+<li>Primary image - Base address:     0x00000000</li>
+<li>Primary image - Image size:       0x000A8000</li>
+<li>Secondary image - Base address:   0x000A8000</li>
+<li>Secondary image - Image size      0x00000000</li>
 </ul></li>
-<li>In the <code>&lt;mcuboot_example_root&gt;/flash_map_backend/flash_map_backend.c</code> file:
+<li>If using a CC13X4 platform, modify the following configurables:
 <ul>
-<li>Find the definitions for <code>BOOT_PRIMARY_1_BASE_ADDRESS</code>, <code>BOOT_PRIMARY_1_SIZE</code>, <code>BOOT_SECONDARY_1_BASE_ADDRESS</code>, and <code>BOOT_SECONDARY_1_SIZE</code>. There should be several, but only one set defined for the platform you are currently using (CC13X2X7 or CC13X4).</li>
-<li>If using a CC13X2X7 platform, modify the values above to the following:
-<ul>
-<li><code>#define BOOT_PRIMARY_1_BASE_ADDRESS     0x00000000</code></li>
-<li><code>#define BOOT_PRIMARY_1_SIZE             0x000A8000</code></li>
-<li><code>#define BOOT_SECONDARY_1_BASE_ADDRESS   0x000A8000</code></li>
-<li><code>#define BOOT_SECONDARY_1_SIZE           0x0</code></li>
-</ul></li>
-<li>If using a CC13X4 platform, modify the values above to the following:
-<ul>
-<li><code>#define BOOT_PRIMARY_1_BASE_ADDRESS     0x00006000</code></li>
-<li><code>#define BOOT_PRIMARY_1_SIZE             0x000A8000</code></li>
-<li><code>#define BOOT_SECONDARY_1_BASE_ADDRESS   0x000AE000</code></li>
-<li><code>#define BOOT_SECONDARY_1_SIZE           0x0</code></li>
+<li>Primary image - Base address:     0x00006000</li>
+<li>Primary image - Image size:       0x000A8000</li>
+<li>Secondary image - Base address:   0x000AE000</li>
+<li>Secondary image - Image size      0x00000000</li>
 </ul></li>
 </ul></li>
 </ul>
@@ -150,7 +145,7 @@ For information on running these scripts, refer to the readme at https://github.
       with 100,000+ analog ICs and embedded processors, along with software, tools
       and the industry's largest sales/support staff.</p>
       <p>
-        <a href="http://www.ti.com/corp/docs/legal/copyright.shtml">&copy; Copyright 1995-2024</a>, Texas Instruments Incorporated. All rights reserved. <br>
+        <a href="http://www.ti.com/corp/docs/legal/copyright.shtml">&copy; Copyright 1995-2025</a>, Texas Instruments Incorporated. All rights reserved. <br>
         <a href="http://www.ti.com/corp/docs/legal/trademark/trademrk.htm">Trademarks</a> | <a href="http://www.ti.com/corp/docs/legal/privacy.shtml">Privacy policy</a> | <a href="http://www.ti.com/corp/docs/legal/termsofuse.shtml">Terms of use</a> | <a href="http://www.ti.com/lsds/ti/legal/termsofsale.page">Terms of sale</a>
       </p>
     </footer>
