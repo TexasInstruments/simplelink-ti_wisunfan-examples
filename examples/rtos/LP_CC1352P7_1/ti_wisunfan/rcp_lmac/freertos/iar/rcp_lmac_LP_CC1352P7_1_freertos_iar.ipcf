@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- IAR Project Connection File -->
+
+<iarProjectConnection version="1.2" name="rcp_lmac" oneShot="true"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="IarProjectConnection_1.2.xsd">
+
+    <device>
+        <name>CC1352P7</name>
+    </device>
+
+    <asmIncludePath>
+        <path>$PROJ_DIR$</path>
+    </asmIncludePath>
+
+    <includePath>
+        <path>$PROJ_DIR$</path>
+        <path>$SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR$/source/ti/ti_wisunfan/apps/rcp_lmac</path>
+        <path>$SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR$/source/ti/ti_wisunfan/apps/common/include</path>
+        <path>$SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR$/source/ti/ti_wisunfan/wisunfan_mac/npi/src</path>
+        <path>$SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR$/source/ti/ti_wisunfan/wisunfan_mac/npi/src/inc</path>
+        <path>$SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR$/source/ti/ti_wisunfan/mt_interface/mt</path>
+        <path>$SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR$/source/ti/ti_wisunfan/mt_interface</path>
+        <path>$SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR$/source/ti/ti_wisunfan</path>
+        <path>$SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR$/source/ti/ti_wisunfan/rcp</path>
+        <path>$SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR$/source/ti/ti_wisunfan/config</path>
+        <path>$SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR$/source/ti/ti_wisunfan/uip</path>
+        <path>$SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR$/source/ti/ti_wisunfan/uip/conf</path>
+        <path>$SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR$/source/ti/ti_wisunfan/uip/inc</path>
+        <path>$SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR$/source/ti/ti_wisunfan/uip/pltfrm/sysbios</path>
+        <path>$SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR$/source/ti/ti_wisunfan/uip/net</path>
+        <path>$SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR$/source/ti/ti_wisunfan/wisunfan_mac/services</path>
+        <path>$SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR$/source/ti/ti_wisunfan/wisunfan_mac/hal/assert</path>
+        <path>$SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR$/source/ti/ti_wisunfan/wisunfan_mac/hal/appasrt</path>
+        <path>$SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR$/source/ti/ti_wisunfan/wisunfan_mac/hal/crypto</path>
+        <path>$SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR$/source/ti/ti_wisunfan/wisunfan_mac/hal/platform</path>
+        <path>$SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR$/source/ti/ti_wisunfan/wisunfan_mac/hal/rf</path>
+        <path>$SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR$/source/ti/ti_wisunfan/wisunfan_mac/high_level</path>
+        <path>$SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR$/source/ti/ti_wisunfan/wisunfan_mac/low_level</path>
+        <path>$SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR$/source/ti/ti_wisunfan/wisunfan_mac/common/osal_port</path>
+        <path>$SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR$/source/ti/ti_wisunfan/wisunfan_mac/common</path>
+        <path>$SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR$/source/ti/ti_wisunfan/wisunfan_mac/common/boards</path>
+        <path>$SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR$/source/ti/ti_wisunfan/wisunfan_mac/common/util</path>
+        <path>$SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR$/source/ti/ti_wisunfan/wisunfan_mac/common/inc</path>
+        <path>$SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR$/source/ti/ti_wisunfan/wisunfan_mac/common/stack/src</path>
+        <path>$SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR$/source/ti/ti_wisunfan/wisunfan_mac/common/stack/tirtos/inc</path>
+        <path>$SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR$/source/ti/ti_wisunfan/wisunfan_mac/common/heapmgr</path>
+        <path>$SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR$/source/ti/ti_wisunfan/wisunfan_mac/services/saddr</path>
+        <path>$SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR$/source/ti/ti_wisunfan/wisunfan_mac/services/sdata</path>
+        <path>$SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR$/source/ti/ti_wisunfan/wisunfan_mac/fh</path>
+        <path>$SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR$/source/ti/ti_wisunfan/wisunfan_mac/inc</path>
+        <path>$SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR$/source/ti/ti_wisunfan/wisunfan_mac/rom</path>
+        <path>$SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR$/source/ti/ti_wisunfan/wisunfan_mac/inc/cc13xx</path>
+        <path>$SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR$/source/ti/ti_wisunfan/wisunfan_mac/low_level/cc13xx</path>
+        <path>$SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR$/source/ti/ti_wisunfan/wisunfan_mac/tracer</path>
+        <path>$SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR$/source/third_party/mbed/nanostack/sal-stack-nanostack/nanostack</path>
+        <path>$SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR$/source/third_party/mbed/frameworks/nanostack-libservice/mbed-client-libservice</path>
+        <path>$SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR$/source</path>
+        <path>$SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR$/source/ti/devices/cc13x2x7_cc26x2x7</path>
+        <path>$SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR$/source/ti/devices/cc13x2x7_cc26x2x7/driverlib</path>
+        <path>$SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR$/source/ti/devices/cc13x2x7_cc26x2x7/inc</path>
+        <path>$SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR$/source/ti/posix/iar</path>
+        <path>$SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR$/kernel/freertos</path>
+        <path>$SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR$/kernel/freertos/builds/cc13x2_cc26x2/release/pregenerated_configuration</path>
+        <path>$SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR$/source/third_party/freertos/include</path>
+        <path>$SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR$/source/third_party/freertos/portable/IAR/ARM_CM4F</path>
+    </includePath>
+
+    <defines>
+        <define>WISUN_RCP_ENABLE</define>
+        <define>WISUN_RCP_LMAC</define>
+        <define>NPI_USE_UART</define>
+        <define>MT_VER_MAJOR=2</define>
+        <define>MT_VER_MINOR=2</define>
+        <define>MT_VER_MAINT=0</define>
+        <define>MT_PROTOCOL_LEN_FIELD_2BYTES</define>
+        <define>Board_EXCLUDE_NVS_EXTERNAL_FLASH</define>
+        <define>DeviceFamily_CC13X2X7</define>
+        <define>FREERTOS_SUPPORT</define>
+        <define>FREERTOS</define>
+        <define>NVOCMP_POSIX_MUTEX</define>
+    </defines>
+
+    <extraOptions>
+        <args>
+            <arg>-f$PROJ_DIR$/ti_utils_build_compiler.opt</arg>
+            <arg>--diag_suppress=Pe167,Pe513,Pe114</arg>
+            <arg>-f$PROJ_DIR$/application/defines/router.opts</arg>
+            <arg>--debug</arg>
+            <arg>--silent</arg>
+            <arg>-e</arg>
+            <arg>--aeabi</arg>
+            <arg>--thumb</arg>
+            <arg>--diag_suppress=Pa050</arg>
+        </args>
+    </extraOptions>
+
+    <linkerFile>
+        <override>true</override>
+        <path>$PROJ_DIR$/cc13x2x7_cc26x2x7.icf</path>
+    </linkerFile>
+
+    <linkerExtraOptions>
+        <args>
+            <arg>--redirect __aeabi_memcpy4=__aeabi_memcpy</arg>
+            <arg>-L$SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR$/source</arg>
+            <arg>-L$SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR$/kernel</arg>
+            <arg>--threaded_lib</arg>
+            <arg>--config_def FREERTOS=1</arg>
+            <arg>-f$PROJ_DIR$/ti_utils_build_linker.cmd.genlibs</arg>
+            <arg>--silent</arg>
+        </args>
+    </linkerExtraOptions>
+
+    <customBuildTools>
+        <customBuildTool atRoot="true" name="SysConfig"> <!-- Custom build tool for entire project-->
+            <fileExtensions>.syscfg</fileExtensions>
+            <command>$SYSCONFIG_ROOT$/sysconfig_cli.bat -o $PROJ_DIR$ -s "$SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR$/.metadata/product.json" --compiler iar $FILE_PATH$</command>
+            <output>
+                <path>SysConfig_Generated_Files.ipcf</path>
+            </output>
+            <hasPrio>true</hasPrio> <!-- true: run this tool before all other tools-->
+        </customBuildTool>
+    </customBuildTools>
+
+    <heaps>
+        <heap> <!-- If omitted, id="0" -->
+            <size>0</size>
+        </heap>
+        <heap id="1">
+            <size>0</size>
+        </heap>
+    </heaps>
+    <stacks>
+        <stack> <!-- If omitted, id="0" -->
+            <size>512</size>
+        </stack>
+    </stacks>
+
+
+    <files>
+        <path reference="$PROJ_DIR$/Board.html">$SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR$/source/ti/boards/LP_CC1352P7_1/Board.html</path>
+        <path copyTo="$PROJ_DIR$/cc13x2x7_cc26x2x7.icf">$SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR$/examples/rtos/LP_CC1352P7_1/ti_wisunfan/rcp_lmac/freertos/iar/cc13x2x7_cc26x2x7.icf</path>
+        <path copyTo="$PROJ_DIR$/rcp_lmac.syscfg">$SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR$/examples/rtos/LP_CC1352P7_1/ti_wisunfan/rcp_lmac/freertos/rcp_lmac.syscfg</path>
+        <path copyTo="$PROJ_DIR$/README.md">$SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR$/examples/rtos/LP_CC1352P7_1/ti_wisunfan/rcp_lmac/README.md</path>
+        <group name="application" build="true">
+            <path reference="$PROJ_DIR$/application/main.c">$SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR$/source/ti/ti_wisunfan/apps/rcp_lmac/main.c</path>
+            <path reference="$PROJ_DIR$/application/rcp_app.c">$SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR$/source/ti/ti_wisunfan/apps/rcp_lmac/rcp_app.c</path>
+        </group>
+        <group name="application/defines" build="true">
+            <path copyTo="$PROJ_DIR$/application/defines/router.opts">$SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR$/examples/rtos/LP_CC1352P7_1/ti_wisunfan/rcp_lmac/application/defines/router.opts</path>
+        </group>
+        <group name="application/interface" build="true">
+            <path reference="$PROJ_DIR$/application/interface/mcp.c">$SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR$/source/ti/ti_wisunfan/mt_interface/mcp.c</path>
+            <path reference="$PROJ_DIR$/application/interface/mcp.h">$SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR$/source/ti/ti_wisunfan/mt_interface/mcp.h</path>
+        </group>
+        <group name="application/interface/mt" build="true">
+            <path reference="$PROJ_DIR$/application/interface/mt/mt.c">$SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR$/source/ti/ti_wisunfan/mt_interface/mt/mt.c</path>
+            <path reference="$PROJ_DIR$/application/interface/mt/mt.h">$SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR$/source/ti/ti_wisunfan/mt_interface/mt/mt.h</path>
+            <path reference="$PROJ_DIR$/application/interface/mt/mt_ext.c">$SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR$/source/ti/ti_wisunfan/mt_interface/mt/mt_ext.c</path>
+            <path reference="$PROJ_DIR$/application/interface/mt/mt_ext.h">$SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR$/source/ti/ti_wisunfan/mt_interface/mt/mt_ext.h</path>
+            <path reference="$PROJ_DIR$/application/interface/mt/mt_mac.c">$SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR$/source/ti/ti_wisunfan/mt_interface/mt/mt_mac.c</path>
+            <path reference="$PROJ_DIR$/application/interface/mt/mt_mac.h">$SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR$/source/ti/ti_wisunfan/mt_interface/mt/mt_mac.h</path>
+            <path reference="$PROJ_DIR$/application/interface/mt/mt_pkt.h">$SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR$/source/ti/ti_wisunfan/mt_interface/mt/mt_pkt.h</path>
+            <path reference="$PROJ_DIR$/application/interface/mt/mt_rcp_lmac.c">$SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR$/source/ti/ti_wisunfan/mt_interface/mt/mt_rcp_lmac.c</path>
+            <path reference="$PROJ_DIR$/application/interface/mt/mt_rcp_lmac.h">$SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR$/source/ti/ti_wisunfan/mt_interface/mt/mt_rcp_lmac.h</path>
+            <path reference="$PROJ_DIR$/application/interface/mt/mt_rpc.h">$SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR$/source/ti/ti_wisunfan/mt_interface/mt/mt_rpc.h</path>
+            <path reference="$PROJ_DIR$/application/interface/mt/mt_sys.c">$SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR$/source/ti/ti_wisunfan/mt_interface/mt/mt_sys.c</path>
+            <path reference="$PROJ_DIR$/application/interface/mt/mt_sys.h">$SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR$/source/ti/ti_wisunfan/mt_interface/mt/mt_sys.h</path>
+            <path reference="$PROJ_DIR$/application/interface/mt/mt_util.c">$SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR$/source/ti/ti_wisunfan/mt_interface/mt/mt_util.c</path>
+            <path reference="$PROJ_DIR$/application/interface/mt/mt_util.h">$SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR$/source/ti/ti_wisunfan/mt_interface/mt/mt_util.h</path>
+        </group>
+        <group name="application/npi" build="true">
+            <path reference="$PROJ_DIR$/application/npi/npi_client.h">$SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR$/source/ti/ti_wisunfan/wisunfan_mac/npi/src/inc/npi_client.h</path>
+            <path reference="$PROJ_DIR$/application/npi/npi_config.h">$SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR$/source/ti/ti_wisunfan/wisunfan_mac/npi/src/inc/npi_config.h</path>
+            <path reference="$PROJ_DIR$/application/npi/npi_data.h">$SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR$/source/ti/ti_wisunfan/wisunfan_mac/npi/src/inc/npi_data.h</path>
+            <path reference="$PROJ_DIR$/application/npi/npi_frame.h">$SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR$/source/ti/ti_wisunfan/wisunfan_mac/npi/src/inc/npi_frame.h</path>
+            <path reference="$PROJ_DIR$/application/npi/npi_frame_mt.c">$SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR$/source/ti/ti_wisunfan/wisunfan_mac/npi/src/npi_frame_mt.c</path>
+            <path reference="$PROJ_DIR$/application/npi/npi_rxbuf.c">$SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR$/source/ti/ti_wisunfan/wisunfan_mac/npi/src/npi_rxbuf.c</path>
+            <path reference="$PROJ_DIR$/application/npi/npi_rxbuf.h">$SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR$/source/ti/ti_wisunfan/wisunfan_mac/npi/src/inc/npi_rxbuf.h</path>
+            <path reference="$PROJ_DIR$/application/npi/npi_task.c">$SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR$/source/ti/ti_wisunfan/wisunfan_mac/npi/src/npi_task.c</path>
+            <path reference="$PROJ_DIR$/application/npi/npi_task.h">$SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR$/source/ti/ti_wisunfan/wisunfan_mac/npi/src/inc/npi_task.h</path>
+            <path reference="$PROJ_DIR$/application/npi/npi_tl.c">$SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR$/source/ti/ti_wisunfan/wisunfan_mac/npi/src/npi_tl.c</path>
+            <path reference="$PROJ_DIR$/application/npi/npi_tl.h">$SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR$/source/ti/ti_wisunfan/wisunfan_mac/npi/src/inc/npi_tl.h</path>
+            <path reference="$PROJ_DIR$/application/npi/npi_tl_uart.c">$SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR$/source/ti/ti_wisunfan/wisunfan_mac/npi/src/npi_tl_uart.c</path>
+        </group>
+        <group name="rcp" build="true">
+            <path reference="$PROJ_DIR$/rcp/rcp_lmac.c">$SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR$/source/ti/ti_wisunfan/rcp/rcp_lmac.c</path>
+            <path reference="$PROJ_DIR$/rcp/rcp_lmac.h">$SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR$/source/ti/ti_wisunfan/rcp/rcp_lmac.h</path>
+            <path reference="$PROJ_DIR$/rcp/rcp_lmac_helpers.c">$SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR$/source/ti/ti_wisunfan/rcp/rcp_lmac_helpers.c</path>
+            <path reference="$PROJ_DIR$/rcp/rcp_types.h">$SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR$/source/ti/ti_wisunfan/rcp/rcp_types.h</path>
+        </group>
+        <group name="software_stack/ti15_4mac" build="true">
+            <path reference="$PROJ_DIR$/software_stack/ti15_4mac/macTask.c">$SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR$/source/ti/ti_wisunfan/wisunfan_mac/common/osal_port/macTask.c</path>
+            <path reference="$PROJ_DIR$/software_stack/ti15_4mac/macTask.h">$SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR$/source/ti/ti_wisunfan/wisunfan_mac/common/osal_port/macTask.h</path>
+        </group>
+        <group name="software_stack/ti15_4mac/mac_settings" build="true">
+            <path reference="$PROJ_DIR$/software_stack/ti15_4mac/mac_settings/mac_cfg.c">$SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR$/source/ti/ti_wisunfan/wisunfan_mac/high_level/mac_cfg.c</path>
+            <path reference="$PROJ_DIR$/software_stack/ti15_4mac/mac_settings/mac_settings.c">$SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR$/source/ti/ti_wisunfan/wisunfan_mac/low_level/cc13xx/mac_settings.c</path>
+            <path reference="$PROJ_DIR$/software_stack/ti15_4mac/mac_settings/mac_settings.h">$SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR$/source/ti/ti_wisunfan/wisunfan_mac/low_level/cc13xx/mac_settings.h</path>
+        </group>
+        <group name="software_stack/ti15_4mac/osal_port" build="true">
+            <path reference="$PROJ_DIR$/software_stack/ti15_4mac/osal_port/osal_port.c">$SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR$/source/ti/ti_wisunfan/wisunfan_mac/common/osal_port/osal_port_tirtos/osal_port.c</path>
+            <path reference="$PROJ_DIR$/software_stack/ti15_4mac/osal_port/osal_port.h">$SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR$/source/ti/ti_wisunfan/wisunfan_mac/common/osal_port/osal_port.h</path>
+            <path reference="$PROJ_DIR$/software_stack/ti15_4mac/osal_port/osal_port_timers.c">$SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR$/source/ti/ti_wisunfan/wisunfan_mac/common/osal_port/osal_port_tirtos/osal_port_timers.c</path>
+            <path reference="$PROJ_DIR$/software_stack/ti15_4mac/osal_port/osal_port_timers.h">$SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR$/source/ti/ti_wisunfan/wisunfan_mac/common/osal_port/osal_port_timers.h</path>
+        </group>
+        <group name="software_stack/ti15_4mac/radio_configuration" build="true">
+            <path reference="$PROJ_DIR$/software_stack/ti15_4mac/radio_configuration/mac_user_config.c">$SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR$/source/ti/ti_wisunfan/wisunfan_mac/common/boards/mac_user_config.c</path>
+            <path reference="$PROJ_DIR$/software_stack/ti15_4mac/radio_configuration/mac_user_config.h">$SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR$/source/ti/ti_wisunfan/wisunfan_mac/common/boards/mac_user_config.h</path>
+        </group>
+        <group name="software_stack/ti15_4mac/stack_user_api/api_mac" build="true">
+            <path reference="$PROJ_DIR$/software_stack/ti15_4mac/stack_user_api/api_mac/api_mac.c">$SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR$/source/ti/ti_wisunfan/wisunfan_mac/common/osal_port/api_mac.c</path>
+            <path reference="$PROJ_DIR$/software_stack/ti15_4mac/stack_user_api/api_mac/api_mac.h">$SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR$/source/ti/ti_wisunfan/wisunfan_mac/common/osal_port/api_mac.h</path>
+        </group>
+        <group name="software_stack/ti15_4mac/util" build="true">
+            <path reference="$PROJ_DIR$/software_stack/ti15_4mac/util/util_timer.c">$SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR$/source/ti/ti_wisunfan/wisunfan_mac/common/util/util_timer.c</path>
+            <path reference="$PROJ_DIR$/software_stack/ti15_4mac/util/util_timer.h">$SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR$/source/ti/ti_wisunfan/wisunfan_mac/common/util/util_timer.h</path>
+        </group>
+    </files>
+</iarProjectConnection>

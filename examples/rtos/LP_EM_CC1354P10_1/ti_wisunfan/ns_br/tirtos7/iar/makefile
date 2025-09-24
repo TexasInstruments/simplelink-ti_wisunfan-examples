@@ -15,7 +15,7 @@ SYSCFG_C_FILES = $(filter %.c,$(SYSCFG_FILES))
 SYSCFG_H_FILES = $(filter %.h,$(SYSCFG_FILES))
 SYSCFG_OPT_FILES = $(filter %.opt,$(SYSCFG_FILES))
 
-OBJECTS = application_main.obj application_application.obj application_borderrouter_helpers.obj application_borderrouter_ws.obj application_cfg_parser.obj mbed_ti-rf-driver_source_RFQueue.obj mbed_ti-nv-driver_crc.obj mbed_ti-nv-driver_nvocmp.obj mbed_nanostack_sal-stack-nanostack_source_6LoWPAN_ws_ws_bbr_api.obj mbed_mbednanostack2tirtos_nanostack_nanostack-hal-mbed-cmsis-rtos_arm_hal_interrupt.obj mbed_mbednanostack2tirtos_nanostack_nanostack-hal-mbed-cmsis-rtos_arm_hal_random.obj mbed_mbednanostack2tirtos_nanostack_nanostack-hal-mbed-cmsis-rtos_arm_hal_timer.obj mbed_mbednanostack2tirtos_nanostack_nanostack-hal-mbed-cmsis-rtos_ns_event_loop.obj mbed_mbednanostack2tirtos_nanostack_nanostack-hal-mbed-cmsis-rtos_ns_event_loop_mutex.obj mbed_mbednanostack2tirtos_nanostack_nanostack-hal-mbed-cmsis-rtos_ns_hal_init.obj mbed_mbednanostack2tirtos_nanostack_nanostack-hal-mbed-cmsis-rtos_arm_hal_fhss_timer.obj mbed_mbednanostack2tirtos_platform_ns_trace.obj mbed_nanostack_mbed-mesh-api_source_wisun_tasklet.obj software_stack_ti15_4mac_mac_settings_mac_cfg.obj software_stack_ti15_4mac_mac_settings_mac_settings.obj software_stack_ti15_4mac_radio_configuration_mac_user_config.obj software_stack_ti15_4mac_macTask.obj software_stack_ti15_4mac_stack_user_api_api_mac_api_mac.obj software_stack_ti15_4mac_stack_user_api_api_mac_timac_fhss_config.obj software_stack_ti15_4mac_osal_port_osal_port.obj software_stack_ti15_4mac_osal_port_osal_port_timers.obj wisun_ncp_platform_uart.obj wisun_ncp_platform_debug_uart.obj wisun_ncp_src_ncp_ncp_base_mtd.obj $(patsubst %.c,%.obj,$(notdir $(SYSCFG_C_FILES)))
+OBJECTS = application_main.obj application_application.obj application_borderrouter_helpers.obj application_borderrouter_ws.obj application_cfg_parser.obj mbed_ti-rf-driver_source_RFQueue.obj mbed_ti-nv-driver_crc.obj mbed_ti-nv-driver_nvocmp.obj mbed_nanostack_sal-stack-nanostack_source_6LoWPAN_ws_ws_bbr_api.obj mbed_mbednanostack2tirtos_nanostack_nanostack-hal-mbed-cmsis-rtos_arm_hal_interrupt.obj mbed_mbednanostack2tirtos_nanostack_nanostack-hal-mbed-cmsis-rtos_arm_hal_random.obj mbed_mbednanostack2tirtos_nanostack_nanostack-hal-mbed-cmsis-rtos_arm_hal_timer.obj mbed_mbednanostack2tirtos_nanostack_nanostack-hal-mbed-cmsis-rtos_ns_event_loop.obj mbed_mbednanostack2tirtos_nanostack_nanostack-hal-mbed-cmsis-rtos_ns_event_loop_mutex.obj mbed_mbednanostack2tirtos_nanostack_nanostack-hal-mbed-cmsis-rtos_ns_hal_init.obj mbed_mbednanostack2tirtos_nanostack_nanostack-hal-mbed-cmsis-rtos_arm_hal_fhss_timer.obj mbed_mbednanostack2tirtos_platform_ns_trace.obj mbed_nanostack_mbed-mesh-api_source_wisun_tasklet.obj software_stack_ti15_4mac_mac_settings_mac_cfg.obj software_stack_ti15_4mac_mac_settings_mac_settings.obj software_stack_ti15_4mac_radio_configuration_mac_user_config.obj software_stack_ti15_4mac_macTask.obj software_stack_ti15_4mac_stack_user_api_api_mac_timac_fhss_config.obj software_stack_ti15_4mac_osal_port_osal_port.obj software_stack_ti15_4mac_osal_port_osal_port_timers.obj wisun_ncp_platform_uart.obj wisun_ncp_platform_debug_uart.obj wisun_ncp_src_ncp_ncp_base_mtd.obj mbed_nanostack_mac_mac_header_helper_functions.obj mbed_nanostack_mac_sw_mac.obj rcp_rcp_mcps_sap.obj rcp_rcp_security_mib.obj rcp_rcp_mlme.obj rcp_rcp_host.obj rcp_rcp_host_helpers.obj rcp_rcp_queue.obj rcp_rcp_lmac.obj rcp_rcp_lmac_helpers.obj $(patsubst %.c,%.obj,$(notdir $(SYSCFG_C_FILES)))
 NAME = ns_br
 
 # Each config-specific .mak file will initialize appropriate options (AFLAGS, CFLAGS, LFLAGS),
@@ -33,7 +33,7 @@ CFLAGS += -I../.. \
     -Ohz \
     -DWISUN_NCP_ENABLE \
     -DxFIXED_GTK_KEYS \
-    "-I$(SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR)/source/ti/ti_wisunfan/wisunfan_mac/low_level/cc13xx/combo" \
+    -DWISUN_RCP_ENABLE \
     "-I$(SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR)/source/ti/ti_wisunfan/mbed_port/ti-rf-driver/ti-rf-driver" \
     "-I$(SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR)/source/ti/ti_wisunfan/apps/border_router_nanostack_tirf" \
     "-I$(SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR)/source/ti/ti_wisunfan/apps/common/include" \
@@ -42,6 +42,7 @@ CFLAGS += -I../.. \
     --preinclude=mbed_config.h \
     --diag_suppress=Pe167,Pe513,Pe114 \
     -f../../application/defines/router.opts \
+    "-I$(SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR)/source/ti/posix/iar" \
     "-I$(SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR)/source/ti/ti_wisunfan/mbed_port/ti-rf-driver/source" \
     "-I$(SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR)/source/ti/ti_wisunfan/mbed_port/mbednanostack2tirtos" \
     "-I$(SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR)/source/ti/ti_wisunfan/mbed_port/mbednanostack2tirtos/platform" \
@@ -81,7 +82,7 @@ CFLAGS += -I../.. \
     "-I$(SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR)/source/third_party/ti_wisunfan/mbedtls/inc" \
     "-I$(SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR)/source/third_party/ti_wisunfan/mbedtls/platform/COMPONENT_PSA_SRV_IMPL/COMPONENT_NSPE" \
     "-I$(SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR)/source/ti/ti_wisunfan" \
-    "-I$(SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR)/source/ti/ti_wisunfan/shell" \
+    "-I$(SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR)/source/ti/ti_wisunfan/rcp" \
     "-I$(SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR)/source/ti/ti_wisunfan/config" \
     "-I$(SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR)/source/ti/ti_wisunfan/uip" \
     "-I$(SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR)/source/ti/ti_wisunfan/uip/conf" \
@@ -133,7 +134,6 @@ CFLAGS += -I../.. \
     -DEXCLUDE_TRACE \
     -DxSWITCH_NCP_TO_TRACE \
     -DTLS_SEC_PROT_LIB_USE_MBEDTLS_PLATFORM_MEMORY \
-    "-I$(SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR)/source/ti/posix/iar" \
     "-I$(SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR)/source/ti/ti_wisunfan/ncp_interface/config" \
     "-I$(SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR)/source/ti/ti_wisunfan/ncp_interface/include" \
     "-I$(SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR)/source/ti/ti_wisunfan/ncp_interface/src" \
@@ -171,7 +171,7 @@ CPPFLAGS += --c++ \
     -Ohz \
     -DWISUN_NCP_ENABLE \
     -DxFIXED_GTK_KEYS \
-    "-I$(SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR)/source/ti/ti_wisunfan/wisunfan_mac/low_level/cc13xx/combo" \
+    -DWISUN_RCP_ENABLE \
     "-I$(SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR)/source/ti/ti_wisunfan/mbed_port/ti-rf-driver/ti-rf-driver" \
     "-I$(SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR)/source/ti/ti_wisunfan/apps/border_router_nanostack_tirf" \
     "-I$(SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR)/source/ti/ti_wisunfan/apps/common/include" \
@@ -180,6 +180,7 @@ CPPFLAGS += --c++ \
     --preinclude=mbed_config.h \
     --diag_suppress=Pe167,Pe513,Pe114 \
     -f../../application/defines/router.opts \
+    "-I$(SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR)/source/ti/posix/iar" \
     "-I$(SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR)/source/ti/ti_wisunfan/mbed_port/ti-rf-driver/source" \
     "-I$(SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR)/source/ti/ti_wisunfan/mbed_port/mbednanostack2tirtos" \
     "-I$(SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR)/source/ti/ti_wisunfan/mbed_port/mbednanostack2tirtos/platform" \
@@ -219,7 +220,7 @@ CPPFLAGS += --c++ \
     "-I$(SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR)/source/third_party/ti_wisunfan/mbedtls/inc" \
     "-I$(SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR)/source/third_party/ti_wisunfan/mbedtls/platform/COMPONENT_PSA_SRV_IMPL/COMPONENT_NSPE" \
     "-I$(SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR)/source/ti/ti_wisunfan" \
-    "-I$(SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR)/source/ti/ti_wisunfan/shell" \
+    "-I$(SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR)/source/ti/ti_wisunfan/rcp" \
     "-I$(SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR)/source/ti/ti_wisunfan/config" \
     "-I$(SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR)/source/ti/ti_wisunfan/uip" \
     "-I$(SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR)/source/ti/ti_wisunfan/uip/conf" \
@@ -271,7 +272,6 @@ CPPFLAGS += --c++ \
     -DEXCLUDE_TRACE \
     -DxSWITCH_NCP_TO_TRACE \
     -DTLS_SEC_PROT_LIB_USE_MBEDTLS_PLATFORM_MEMORY \
-    "-I$(SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR)/source/ti/posix/iar" \
     "-I$(SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR)/source/ti/ti_wisunfan/ncp_interface/config" \
     "-I$(SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR)/source/ti/ti_wisunfan/ncp_interface/include" \
     "-I$(SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR)/source/ti/ti_wisunfan/ncp_interface/src" \
@@ -433,10 +433,6 @@ software_stack_ti15_4mac_macTask.obj: $(SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR
 	@ echo Building $@
 	@ $(CC) $(CFLAGS) $< -o $@
 
-software_stack_ti15_4mac_stack_user_api_api_mac_api_mac.obj: $(SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR)/source/ti/ti_wisunfan/wisunfan_mac/common/osal_port/api_mac.c $(SYSCFG_H_FILES)
-	@ echo Building $@
-	@ $(CC) $(CFLAGS) $< -o $@
-
 software_stack_ti15_4mac_stack_user_api_api_mac_timac_fhss_config.obj: $(SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR)/source/ti/ti_wisunfan/wisunfan_mac/common/osal_port/timac_fhss_config.c $(SYSCFG_H_FILES)
 	@ echo Building $@
 	@ $(CC) $(CFLAGS) $< -o $@
@@ -454,6 +450,46 @@ wisun_ncp_platform_uart.obj: $(SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR)/source/
 	@ $(CC) $(CFLAGS) $< -o $@
 
 wisun_ncp_platform_debug_uart.obj: $(SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR)/source/ti/ti_wisunfan/ncp_interface/examples/ncp_ftd/platform/debug_uart.c $(SYSCFG_H_FILES)
+	@ echo Building $@
+	@ $(CC) $(CFLAGS) $< -o $@
+
+mbed_nanostack_mac_mac_header_helper_functions.obj: $(SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR)/source/third_party/mbed/nanostack/sal-stack-nanostack/source/MAC/IEEE802_15_4/mac_header_helper_functions.c $(SYSCFG_H_FILES)
+	@ echo Building $@
+	@ $(CC) $(CFLAGS) $< -o $@
+
+mbed_nanostack_mac_sw_mac.obj: $(SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR)/source/third_party/mbed/nanostack/sal-stack-nanostack/source/MAC/IEEE802_15_4/sw_mac.c $(SYSCFG_H_FILES)
+	@ echo Building $@
+	@ $(CC) $(CFLAGS) $< -o $@
+
+rcp_rcp_mcps_sap.obj: $(SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR)/source/ti/ti_wisunfan/rcp/rcp_mcps_sap.c $(SYSCFG_H_FILES)
+	@ echo Building $@
+	@ $(CC) $(CFLAGS) $< -o $@
+
+rcp_rcp_security_mib.obj: $(SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR)/source/ti/ti_wisunfan/rcp/rcp_security_mib.c $(SYSCFG_H_FILES)
+	@ echo Building $@
+	@ $(CC) $(CFLAGS) $< -o $@
+
+rcp_rcp_mlme.obj: $(SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR)/source/ti/ti_wisunfan/rcp/rcp_mlme.c $(SYSCFG_H_FILES)
+	@ echo Building $@
+	@ $(CC) $(CFLAGS) $< -o $@
+
+rcp_rcp_host.obj: $(SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR)/source/ti/ti_wisunfan/rcp/rcp_host.c $(SYSCFG_H_FILES)
+	@ echo Building $@
+	@ $(CC) $(CFLAGS) $< -o $@
+
+rcp_rcp_host_helpers.obj: $(SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR)/source/ti/ti_wisunfan/rcp/rcp_host_helpers.c $(SYSCFG_H_FILES)
+	@ echo Building $@
+	@ $(CC) $(CFLAGS) $< -o $@
+
+rcp_rcp_queue.obj: $(SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR)/source/ti/ti_wisunfan/rcp/rcp_queue.c $(SYSCFG_H_FILES)
+	@ echo Building $@
+	@ $(CC) $(CFLAGS) $< -o $@
+
+rcp_rcp_lmac.obj: $(SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR)/source/ti/ti_wisunfan/rcp/rcp_lmac.c $(SYSCFG_H_FILES)
+	@ echo Building $@
+	@ $(CC) $(CFLAGS) $< -o $@
+
+rcp_rcp_lmac_helpers.obj: $(SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR)/source/ti/ti_wisunfan/rcp/rcp_lmac_helpers.c $(SYSCFG_H_FILES)
 	@ echo Building $@
 	@ $(CC) $(CFLAGS) $< -o $@
 

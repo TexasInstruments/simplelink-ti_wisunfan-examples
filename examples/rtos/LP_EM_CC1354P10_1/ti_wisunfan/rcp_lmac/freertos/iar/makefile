@@ -1,0 +1,262 @@
+SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR ?= $(abspath ../../../../../../..)
+
+include $(SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR)/imports.mak
+
+CC = "$(IAR_ARMCOMPILER)/bin/iccarm"
+LNK = "$(IAR_ARMCOMPILER)/bin/ilinkarm"
+HEX = "$(IAR_ARMCOMPILER)/bin/ielftool"
+
+SYSCONFIG_GUI_TOOL = $(dir $(SYSCONFIG_TOOL))sysconfig_gui$(suffix $(SYSCONFIG_TOOL))
+SYSCFG_CMD_STUB = $(SYSCONFIG_TOOL) --compiler iar --product $(SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR)/.metadata/product.json
+SYSCFG_GUI_CMD_STUB = $(SYSCONFIG_GUI_TOOL) --compiler iar --product $(SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR)/.metadata/product.json
+SYSCFG_FILES := $(shell $(SYSCFG_CMD_STUB) --listGeneratedFiles --listReferencedFiles --output . ../../freertos/rcp_lmac.syscfg)
+
+SYSCFG_C_FILES = $(filter %.c,$(SYSCFG_FILES))
+SYSCFG_H_FILES = $(filter %.h,$(SYSCFG_FILES))
+SYSCFG_OPT_FILES = $(filter %.opt,$(SYSCFG_FILES))
+
+OBJECTS = application_main.obj application_rcp_app.obj software_stack_ti15_4mac_mac_settings_mac_cfg.obj software_stack_ti15_4mac_mac_settings_mac_settings.obj software_stack_ti15_4mac_radio_configuration_mac_user_config.obj rcp_rcp_lmac.obj rcp_rcp_lmac_helpers.obj software_stack_ti15_4mac_macTask.obj software_stack_ti15_4mac_osal_port_osal_port.obj software_stack_ti15_4mac_osal_port_osal_port_timers.obj software_stack_ti15_4mac_stack_user_api_api_mac_api_mac.obj software_stack_ti15_4mac_util_util_timer.obj application_npi_npi_frame_mt.obj application_npi_npi_rxbuf.obj application_npi_npi_task.obj application_npi_npi_tl.obj application_npi_npi_tl_uart.obj application_interface_mt_mt.obj application_interface_mt_mt_ext.obj application_interface_mt_mt_mac.obj application_interface_mt_mt_rcp_lmac.obj application_interface_mt_mt_sys.obj application_interface_mt_mt_util.obj application_interface_mcp.obj $(patsubst %.c,%.obj,$(notdir $(SYSCFG_C_FILES)))
+NAME = rcp_lmac
+
+# Each config-specific .mak file will initialize appropriate options (AFLAGS, CFLAGS, LFLAGS),
+# which will then be appended to below.
+CONFIG := RELEASE
+ifeq ($(CONFIG), RELEASE)
+	include Release.mak
+else ifeq ($(CONFIG), SECUREBOOT)
+	include SecureBoot.mak
+endif
+
+CFLAGS += -I../.. \
+    -I. \
+    $(addprefix -f,$(SYSCFG_OPT_FILES)) \
+    -Ohz \
+    -DWISUN_RCP_ENABLE \
+    -DWISUN_RCP_LMAC \
+    -DNPI_USE_UART \
+    -DMT_VER_MAJOR=2 \
+    -DMT_VER_MINOR=2 \
+    -DMT_VER_MAINT=0 \
+    -DMT_PROTOCOL_LEN_FIELD_2BYTES \
+    "-I$(SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR)/source/ti/ti_wisunfan/apps/rcp_lmac" \
+    "-I$(SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR)/source/ti/ti_wisunfan/apps/common/include" \
+    "-I$(SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR)/source/ti/ti_wisunfan/wisunfan_mac/npi/src" \
+    "-I$(SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR)/source/ti/ti_wisunfan/wisunfan_mac/npi/src/inc" \
+    "-I$(SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR)/source/ti/ti_wisunfan/mt_interface/mt" \
+    "-I$(SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR)/source/ti/ti_wisunfan/mt_interface" \
+    --diag_suppress=Pe167,Pe513,Pe114 \
+    -f../../application/defines/router.opts \
+    "-I$(SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR)/source/ti/ti_wisunfan" \
+    "-I$(SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR)/source/ti/ti_wisunfan/rcp" \
+    "-I$(SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR)/source/ti/ti_wisunfan/config" \
+    "-I$(SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR)/source/ti/ti_wisunfan/uip" \
+    "-I$(SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR)/source/ti/ti_wisunfan/uip/conf" \
+    "-I$(SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR)/source/ti/ti_wisunfan/uip/inc" \
+    "-I$(SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR)/source/ti/ti_wisunfan/uip/pltfrm/sysbios" \
+    "-I$(SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR)/source/ti/ti_wisunfan/uip/net" \
+    "-I$(SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR)/source/ti/ti_wisunfan/wisunfan_mac/services" \
+    "-I$(SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR)/source/ti/ti_wisunfan/wisunfan_mac/hal/assert" \
+    "-I$(SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR)/source/ti/ti_wisunfan/wisunfan_mac/hal/appasrt" \
+    "-I$(SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR)/source/ti/ti_wisunfan/wisunfan_mac/hal/crypto" \
+    "-I$(SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR)/source/ti/ti_wisunfan/wisunfan_mac/hal/platform" \
+    "-I$(SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR)/source/ti/ti_wisunfan/wisunfan_mac/hal/rf" \
+    "-I$(SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR)/source/ti/ti_wisunfan/wisunfan_mac/high_level" \
+    "-I$(SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR)/source/ti/ti_wisunfan/wisunfan_mac/low_level" \
+    "-I$(SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR)/source/ti/ti_wisunfan/wisunfan_mac/common/osal_port" \
+    "-I$(SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR)/source/ti/ti_wisunfan/wisunfan_mac/common" \
+    "-I$(SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR)/source/ti/ti_wisunfan/wisunfan_mac/common/boards" \
+    "-I$(SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR)/source/ti/ti_wisunfan/wisunfan_mac/common/util" \
+    "-I$(SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR)/source/ti/ti_wisunfan/wisunfan_mac/common/inc" \
+    "-I$(SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR)/source/ti/ti_wisunfan/wisunfan_mac/common/stack/src" \
+    "-I$(SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR)/source/ti/ti_wisunfan/wisunfan_mac/common/stack/tirtos/inc" \
+    "-I$(SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR)/source/ti/ti_wisunfan/wisunfan_mac/common/heapmgr" \
+    "-I$(SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR)/source/ti/ti_wisunfan/wisunfan_mac/services/saddr" \
+    "-I$(SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR)/source/ti/ti_wisunfan/wisunfan_mac/services/sdata" \
+    "-I$(SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR)/source/ti/ti_wisunfan/wisunfan_mac/fh" \
+    "-I$(SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR)/source/ti/ti_wisunfan/wisunfan_mac/inc" \
+    "-I$(SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR)/source/ti/ti_wisunfan/wisunfan_mac/rom" \
+    "-I$(SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR)/source/ti/ti_wisunfan/wisunfan_mac/inc/cc13xx" \
+    "-I$(SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR)/source/ti/ti_wisunfan/wisunfan_mac/low_level/cc13xx" \
+    "-I$(SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR)/source/ti/ti_wisunfan/wisunfan_mac/tracer" \
+    "-I$(SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR)/source/third_party/mbed/nanostack/sal-stack-nanostack/nanostack" \
+    "-I$(SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR)/source/third_party/mbed/frameworks/nanostack-libservice/mbed-client-libservice" \
+    -DBoard_EXCLUDE_NVS_EXTERNAL_FLASH \
+    -DDeviceFamily_CC13X4 \
+    "-I$(SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR)/source" \
+    "-I$(SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR)/source/ti/devices/cc13x4_cc26x4" \
+    "-I$(SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR)/source/ti/devices/cc13x4_cc26x4/driverlib" \
+    "-I$(SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR)/source/ti/devices/cc13x4_cc26x4/inc" \
+    "-I$(SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR)/source/ti/posix/iar" \
+    "-I$(SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR)/kernel/freertos" \
+    "-I$(SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR)/kernel/freertos/builds/cc13x4_cc26x4/release/pregenerated_configuration" \
+    -DFREERTOS_SUPPORT \
+    -DFREERTOS \
+    -DNVOCMP_POSIX_MUTEX \
+    "-I$(SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR)/source/third_party/freertos/include" \
+    "-I$(SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR)/source/third_party/freertos/portable/IAR/ARM_CM33/non_secure" \
+    --debug \
+    --silent \
+    -e \
+    --aeabi \
+    --thumb \
+    --diag_suppress=Pa050 \
+    --cpu Cortex-M33 \
+    --fpu VFPv5_sp \
+    --vla
+
+LFLAGS += --redirect __aeabi_memcpy4=__aeabi_memcpy \
+    "-L$(SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR)/source" \
+    "-L$(SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR)/kernel" \
+    --threaded_lib \
+    --config_def FREERTOS=1 \
+    -fti_utils_build_linker.cmd.genlibs \
+    --config ../../freertos/iar/cc13x4_cc26x4.icf \
+    --map "$(NAME).map" \
+    --silent \
+    --semihosting=iar_breakpoint \
+    --cpu=Cortex-M33 \
+    --fpu VFPv5_sp
+
+# Note, the config-specific postbuild goal is defined in each {config}.mak file,
+# which was included above based on the value of the CONFIG variable.
+all: postbuild
+
+.INTERMEDIATE: syscfg
+$(SYSCFG_FILES): syscfg
+	@ echo generation complete
+
+syscfg: ../../freertos/rcp_lmac.syscfg
+	@ echo Generating configuration files...
+	@ $(SYSCFG_CMD_STUB) --output $(@D) $<
+
+
+# Helpful hint that the user needs to use a standalone SysConfig installation
+$(SYSCONFIG_GUI_TOOL):
+	$(error $(dir $(SYSCONFIG_TOOL)) does not contain the GUI framework \
+        necessary to launch the SysConfig GUI.  Please set SYSCONFIG_TOOL \
+        (in your SDK's imports.mak) to a standalone SysConfig installation \
+        rather than one inside CCS)
+
+syscfg-gui: ../../freertos/rcp_lmac.syscfg $(SYSCONFIG_GUI_TOOL)
+	@ echo Opening SysConfig GUI
+	@ $(SYSCFG_GUI_CMD_STUB) $<
+
+define C_RULE
+$(basename $(notdir $(1))).obj: $(1) $(SYSCFG_H_FILES)
+	@ echo Building $$@
+	@ $(CC) $(CFLAGS) $$< -o $$@
+endef
+
+$(foreach c_file,$(SYSCFG_C_FILES),$(eval $(call C_RULE,$(c_file))))
+
+application_main.obj: $(SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR)/source/ti/ti_wisunfan/apps/rcp_lmac/main.c $(SYSCFG_H_FILES)
+	@ echo Building $@
+	@ $(CC) $(CFLAGS) $< -o $@
+
+application_rcp_app.obj: $(SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR)/source/ti/ti_wisunfan/apps/rcp_lmac/rcp_app.c $(SYSCFG_H_FILES)
+	@ echo Building $@
+	@ $(CC) $(CFLAGS) $< -o $@
+
+software_stack_ti15_4mac_mac_settings_mac_cfg.obj: $(SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR)/source/ti/ti_wisunfan/wisunfan_mac/high_level/mac_cfg.c $(SYSCFG_H_FILES)
+	@ echo Building $@
+	@ $(CC) $(CFLAGS) $< -o $@
+
+software_stack_ti15_4mac_mac_settings_mac_settings.obj: $(SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR)/source/ti/ti_wisunfan/wisunfan_mac/low_level/cc13xx/mac_settings.c $(SYSCFG_H_FILES)
+	@ echo Building $@
+	@ $(CC) $(CFLAGS) $< -o $@
+
+software_stack_ti15_4mac_radio_configuration_mac_user_config.obj: $(SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR)/source/ti/ti_wisunfan/wisunfan_mac/common/boards/mac_user_config.c $(SYSCFG_H_FILES)
+	@ echo Building $@
+	@ $(CC) $(CFLAGS) $< -o $@
+
+rcp_rcp_lmac.obj: $(SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR)/source/ti/ti_wisunfan/rcp/rcp_lmac.c $(SYSCFG_H_FILES)
+	@ echo Building $@
+	@ $(CC) $(CFLAGS) $< -o $@
+
+rcp_rcp_lmac_helpers.obj: $(SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR)/source/ti/ti_wisunfan/rcp/rcp_lmac_helpers.c $(SYSCFG_H_FILES)
+	@ echo Building $@
+	@ $(CC) $(CFLAGS) $< -o $@
+
+software_stack_ti15_4mac_macTask.obj: $(SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR)/source/ti/ti_wisunfan/wisunfan_mac/common/osal_port/macTask.c $(SYSCFG_H_FILES)
+	@ echo Building $@
+	@ $(CC) $(CFLAGS) $< -o $@
+
+software_stack_ti15_4mac_osal_port_osal_port.obj: $(SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR)/source/ti/ti_wisunfan/wisunfan_mac/common/osal_port/osal_port_tirtos/osal_port.c $(SYSCFG_H_FILES)
+	@ echo Building $@
+	@ $(CC) $(CFLAGS) $< -o $@
+
+software_stack_ti15_4mac_osal_port_osal_port_timers.obj: $(SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR)/source/ti/ti_wisunfan/wisunfan_mac/common/osal_port/osal_port_tirtos/osal_port_timers.c $(SYSCFG_H_FILES)
+	@ echo Building $@
+	@ $(CC) $(CFLAGS) $< -o $@
+
+software_stack_ti15_4mac_stack_user_api_api_mac_api_mac.obj: $(SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR)/source/ti/ti_wisunfan/wisunfan_mac/common/osal_port/api_mac.c $(SYSCFG_H_FILES)
+	@ echo Building $@
+	@ $(CC) $(CFLAGS) $< -o $@
+
+software_stack_ti15_4mac_util_util_timer.obj: $(SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR)/source/ti/ti_wisunfan/wisunfan_mac/common/util/util_timer.c $(SYSCFG_H_FILES)
+	@ echo Building $@
+	@ $(CC) $(CFLAGS) $< -o $@
+
+application_npi_npi_frame_mt.obj: $(SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR)/source/ti/ti_wisunfan/wisunfan_mac/npi/src/npi_frame_mt.c $(SYSCFG_H_FILES)
+	@ echo Building $@
+	@ $(CC) $(CFLAGS) $< -o $@
+
+application_npi_npi_rxbuf.obj: $(SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR)/source/ti/ti_wisunfan/wisunfan_mac/npi/src/npi_rxbuf.c $(SYSCFG_H_FILES)
+	@ echo Building $@
+	@ $(CC) $(CFLAGS) $< -o $@
+
+application_npi_npi_task.obj: $(SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR)/source/ti/ti_wisunfan/wisunfan_mac/npi/src/npi_task.c $(SYSCFG_H_FILES)
+	@ echo Building $@
+	@ $(CC) $(CFLAGS) $< -o $@
+
+application_npi_npi_tl.obj: $(SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR)/source/ti/ti_wisunfan/wisunfan_mac/npi/src/npi_tl.c $(SYSCFG_H_FILES)
+	@ echo Building $@
+	@ $(CC) $(CFLAGS) $< -o $@
+
+application_npi_npi_tl_uart.obj: $(SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR)/source/ti/ti_wisunfan/wisunfan_mac/npi/src/npi_tl_uart.c $(SYSCFG_H_FILES)
+	@ echo Building $@
+	@ $(CC) $(CFLAGS) $< -o $@
+
+application_interface_mt_mt.obj: $(SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR)/source/ti/ti_wisunfan/mt_interface/mt/mt.c $(SYSCFG_H_FILES)
+	@ echo Building $@
+	@ $(CC) $(CFLAGS) $< -o $@
+
+application_interface_mt_mt_ext.obj: $(SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR)/source/ti/ti_wisunfan/mt_interface/mt/mt_ext.c $(SYSCFG_H_FILES)
+	@ echo Building $@
+	@ $(CC) $(CFLAGS) $< -o $@
+
+application_interface_mt_mt_mac.obj: $(SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR)/source/ti/ti_wisunfan/mt_interface/mt/mt_mac.c $(SYSCFG_H_FILES)
+	@ echo Building $@
+	@ $(CC) $(CFLAGS) $< -o $@
+
+application_interface_mt_mt_rcp_lmac.obj: $(SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR)/source/ti/ti_wisunfan/mt_interface/mt/mt_rcp_lmac.c $(SYSCFG_H_FILES)
+	@ echo Building $@
+	@ $(CC) $(CFLAGS) $< -o $@
+
+application_interface_mt_mt_sys.obj: $(SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR)/source/ti/ti_wisunfan/mt_interface/mt/mt_sys.c $(SYSCFG_H_FILES)
+	@ echo Building $@
+	@ $(CC) $(CFLAGS) $< -o $@
+
+application_interface_mt_mt_util.obj: $(SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR)/source/ti/ti_wisunfan/mt_interface/mt/mt_util.c $(SYSCFG_H_FILES)
+	@ echo Building $@
+	@ $(CC) $(CFLAGS) $< -o $@
+
+application_interface_mcp.obj: $(SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR)/source/ti/ti_wisunfan/mt_interface/mcp.c $(SYSCFG_H_FILES)
+	@ echo Building $@
+	@ $(CC) $(CFLAGS) $< -o $@
+
+$(NAME).out: $(OBJECTS)
+	@ echo linking $@
+	@ $(LNK)  $(OBJECTS)  $(LFLAGS) -o $(NAME).out
+
+$(NAME).hex: $(NAME).out
+	@ echo building $@
+	@ $(HEX) --ihex --verbose $? $@
+
+clean:
+	@ echo Cleaning...
+	@ $(RM) $(OBJECTS) > $(DEVNULL) 2>&1
+	@ $(RM) $(NAME).out > $(DEVNULL) 2>&1
+	@ $(RM) $(NAME).map > $(DEVNULL) 2>&1
+	@ $(RM) $(NAME).hex > $(DEVNULL) 2>&1
+	@ $(RM) $(SYSCFG_FILES)> $(DEVNULL) 2>&1
